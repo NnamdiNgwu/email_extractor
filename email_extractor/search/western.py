@@ -28,7 +28,7 @@ class WesternSearchEngine(BaseSearchEngine):
     
     def search(self, keyword: str, country_code: str, 
                search_operators: Dict = None, 
-               max_results: int = 50,
+               max_results: int = 10000,
                providers: List[str] = None) -> List[str]:
         """Enhanced search with Selenium for Google"""
         
@@ -48,7 +48,7 @@ class WesternSearchEngine(BaseSearchEngine):
                     logger.info(f"Found {len(urls)} URLs from {provider}")
                     
                     # If we get good results from Google, might skip others
-                    if provider == 'google' and len(urls) >= 5:
+                    if provider == 'google' and len(urls) >= 10000:
                         logger.info("Got sufficient results from Google, stopping search")
                         break
                         

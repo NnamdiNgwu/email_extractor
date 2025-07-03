@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 class EmailSpider:
     """Main email extraction spider"""
     
-    def __init__(self, max_workers: int = 3):
+    def __init__(self, max_workers: int = 100):
         self.anti_bot = AntiBot()
         self.domain_filter = DomainFilter()
         self.email_extractor = EmailExtractor()
@@ -35,7 +35,7 @@ class EmailSpider:
         
         if search_config is None:
             search_config = {
-                'max_urls_per_keyword': 30,
+                'max_urls_per_keyword': 10000,
                 'operators': {
                     'exclude_words': ['wikipedia', 'youtube', 'facebook', 'twitter', 'linkedin'],
                     'include_words': ['contact', 'about', 'email', 'support', 'info', 'sales', 'service'],
@@ -60,7 +60,7 @@ class EmailSpider:
                     urls = self.search_engine.search_by_region(
                         keyword=keyword,
                         country_code=country_code,
-                        max_results=search_config.get('max_urls_per_keyword', 30),
+                        max_results=search_config.get('max_urls_per_keyword', 10000),
                         search_operators=search_config.get('operators', {})
                     )
                         
@@ -128,7 +128,7 @@ class EmailSpider:
                     
         return results
     
-    def _process_url(self, url: str, keyword: str, country_code: str) -> List[EmailResult]:
+    def _process_url(self, url: str, keyword:str, country_code: str) -> List[EmailResult]:
         """Process a single URL and extract emails"""
         try:
             response = self.anti_bot.safe_request(url)

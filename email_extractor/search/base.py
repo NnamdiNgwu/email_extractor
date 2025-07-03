@@ -12,7 +12,7 @@ class BaseSearchEngine(ABC):
         self.anti_bot = anti_bot
         
     @abstractmethod
-    def search(self, keyword: str, country_code: str, max_results: int = 50) -> List[str]:
+    def search(self, keyword: str, country_code: str, max_results: int = 10000) -> List[str]:
         """Search for URLs"""
         pass
 

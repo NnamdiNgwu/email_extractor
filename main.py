@@ -26,7 +26,7 @@ logger = logging.getLogger(__name__)
 def main():
     """Main extraction function"""
     # Initialize spider
-    spider = EmailSpider(max_workers=1)
+    spider = EmailSpider(max_workers=3)
     
     # Configuration
     general_keywords = [" Renewable Energy Equipment", "agricultural equipment", "farm machinery","agro machinery",
@@ -122,7 +122,7 @@ def main_chinese():
     country_codes = [".cn", ".com.cn"]
     
     search_config = {
-        'max_urls_per_keyword': 20,
+        'max_urls_per_keyword': 1000,
         'operators': {
             'exclude_words': ['baike', 'zhihu', 'weibo'],
             'language': 'zh'
@@ -142,6 +142,5 @@ def main_chinese():
 if __name__ == "__main__":
     # Run standard extraction
     main()
-    
     # Uncomment to run Chinese extraction
-    # main_chinese()
+    main_chinese()

@@ -49,7 +49,7 @@ class SeleniumGoogleSearch:
             logger.error(f"Failed to initialize Selenium driver: {e}")
             raise
     
-    def search_google(self, keyword: str, country_code: str, max_results: int = 10) -> List[str]:
+    def search_google(self, keyword: str, country_code: str, max_results: int = 10000) -> List[str]:
         """Search Google with JavaScript execution"""
         urls = []
         
@@ -60,7 +60,31 @@ class SeleniumGoogleSearch:
                 ".uk": "https://www.google.co.uk",
                 ".de": "https://www.google.de",
                 ".fr": "https://www.google.fr",
-                ".au": "https://www.google.com.au"
+                ".au": "https://www.google.com.au",
+                ".ca": "https://www.google.ca",
+                ".in": "https://www.google.co.in",
+                ".jp": "https://www.google.co.jp",
+                ".br": "https://www.google.com.br",
+                ".it": "https://www.google.it",
+                ".es": "https://www.google.es",
+                ".ru": "https://www.google.ru",
+                ".nl": "https://www.google.nl",
+                ".pl": "https://www.google.pl",
+                ".se": "https://www.google.se",
+                ".no": "https://www.google.no",
+                ".fi": "https://www.google.fi",
+                ".dk": "https://www.google.dk",
+                ".tr": "https://www.google.com.tr",
+                ".mx": "https://www.google.com.mx",
+                ".ar": "https://www.google.com.ar",
+                ".ch": "https://www.google.ch",
+                ".be": "https://www.google.be",
+                ".at": "https://www.google.at",
+                ".cz": "https://www.google.cz",
+                ".hu": "https://www.google.hu",
+                ".gr": "https://www.google.gr",
+                ".cn": "https://www.google.cn",
+                ".kr": "https://www.google.co.kr",
             }
             
             base_url = google_domains.get(country_code, "https://www.google.com")

@@ -14,7 +14,7 @@ class GlobalSearchEngine:
         self.chinese_engine = ChineseSearchEngine(anti_bot)
     
     def search_by_region(self, keyword: str, country_code: str, 
-                        max_results: int = 50,
+                        max_results: int = 10000,
                         search_operators: dict = None) -> List[str]:
         """Search using region-appropriate search engines"""
         
