@@ -29,14 +29,14 @@ def main():
     spider = EmailSpider(max_workers=3)
     
     # Configuration
-    general_keywords = [" Renewable Energy Equipment", "agricultural equipment", "farm machinery","agro machinery",
+    general_keywords = ["toys", "children's products", 
+                "baby products", "educational toys", "electronics", 
+                "consumer electronics", "home appliances", 
+                "smart home devices", "kitchen appliances", " Renewable Energy Equipment", "agricultural equipment", "farm machinery","agro machinery",
                "food processing", "mining", "wood processing", "wood products",
                 "furniture", "construction materials", "building materials",
                 "construction equipment", "mining equipment", "gold mining",
-                "Mining company", "toys", "children's products", 
-                "baby products", "educational toys", "electronics", 
-                "consumer electronics", "home appliances", "kitchen appliances",
-                "smart home devices"]
+                "Mining company",]
     
      # Marine and Industrial Equipment Keywords
     marine_and_industrial_keywords = [
@@ -88,12 +88,14 @@ def main():
     
     # Search configuration
     search_config = {
-        'max_urls_per_keyword': 30,
+        'max_urls_per_keyword': 50,
         'operators': {
             'exclude_words': ['wikipedia', 'youtube'],#, 'facebook', 'twitter', 'linkedin'],
             'include_words': ['contact', 'sales', 'services' 'about','email', 'mail', 'support', 'info'],
             'language': 'en'
-        }
+        },
+        'delay_range': (3, 6),  # Random delay between requests
+        'checkpoint_interval': 100,  # Save progress every 1000 operations
     }
     
     try:
@@ -115,7 +117,7 @@ def main():
 
 def main_chinese():
     """Chinese market extraction"""
-    spider = EmailSpider(max_workers=2)
+    spider = EmailSpider(max_workers=10)
     
     # Chinese keywords and configuration
     keywords = ["黄金交易", "投资服务", "矿业公司", "金融顾问"]
